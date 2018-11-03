@@ -4,9 +4,12 @@ The apps build system generates all the client side javascript files used on
 studio.code.org. This file contains documentation about how it works and how it
 can be configured for different needs.
 
+Apps build system生成studio.code.org上面使用的所有的client side javascript文件。本文件包含apps build system如何工作、如何配置以满足不用的需求。
+
 ## FAQ
 
 ### Why do we bundle javascript files? What are the goals?
+### 我们为什么要把javascript文件打包？ 目标是什么？
 
 Fundamentally, the purpose of bundling is to speed up page load times by
 decreasing the number of files that the browser has to download for the page to
@@ -14,20 +17,26 @@ work. Between our own code and third party code, there are over 1300 individual
 javascript files needed to run any given web page. By bundling these files
 together (via concatenation) we reduce the number of javascript files the
 browser needs to download to less than 5.
+从根本上讲，打包的目的是为了减少浏览器需要加在的文件的数目，来加速提高加载速度。在我们自己的代码和第三方代码之间，有超过了1300个单独的javascript文件来运行网页。 通过将这些文件打包到一起（通过级联），我们将浏览器需要加载的页面减少到5个以下。
+
 
 ### What is our strategy for bundling?
-
+### 我们打包的策略是什么？
 code.org is a very complex application with a lot of moving parts. Bundling is
 done in a way that balances performance with maintaining our own sanity as
 developers.
+code.org是一个非常复杂的应用，有很多活动的部分。 打包的方式是平衡了效率和保持我们作为开发者的明智（？？？）
 
 Here are the constraints of the system that have lead us to our current bundling
 implementation/strategy:
+以下是引导我们打包策略
 
 1. Rails is responsible for all url routing. That means each browser navigation
    to a url is going to be a full page load with it's own unique set of
    javascript dependencies. Changing this would take an enormous amount of
    effort.
+   Rails对所有的url路由都响应。这意味着，
+   
 
 2. Somes pages served by rails are very simple and require very little
    javascript, if any, such as the home page and other marketing oriented pages.
